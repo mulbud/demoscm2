@@ -66,6 +66,30 @@ public class DbReader {
 		});
 	}
 	
+	public static Shipper getShipper(int shipperId)
+	{
+		List<Shipper> shippers = getAllTableObjects("SELECT * FROM Shippers WHERE ShipperId=" + shipperId, new ObjectReader<Shipper>() {
+
+			@Override
+			public Shipper readFromResultSet(ResultSet rs) throws Exception {
+
+				Shipper s = new Shipper();
+				s.setId(rs.getInt("ShipperId"));
+				s.setName(rs.getString("CompanyName"));
+				s.setPhone(rs.getString("Phone"));
+				
+				return s;
+			}
+			
+		});
+		
+		Shipper result = null;
+		if (shippers.size() > 0)
+		   result = shippers.get(0);
+		
+		return result;
+	}
+	
 	private static <T> List<T> getAllTableObjects(String sql, ObjectReader<T> reader)
 	{
 		List<T> items = new ArrayList<T>();

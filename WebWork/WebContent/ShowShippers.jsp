@@ -26,6 +26,8 @@
 	<div class="col-xs-8">
 	<div>
 	
+	<a href="EditShipper.jsp?new=1">Create New </a>
+	
 	<%
 		// Java Code
 		int value = 27;
@@ -40,6 +42,8 @@
 		<h3><strong><%=p.getName() %></strong>
 		<span class="pull-right label label-primary"><%=p.getPhone()%></span>
 		</h3>
+		<a href="EditShipper.jsp?id=<%=p.getId()%>">Edit </a>
+		<a href="DeleteShipper.jsp?id=<%=p.getId()%>">Delete </a>
 	</div>
 	<%
 		}
